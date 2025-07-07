@@ -5,6 +5,12 @@
     <title>Custom Receiver</title>
     <script type="text/javascript" src="https://www.gstatic.com/cast/sdk/libs/caf_receiver/v3/cast_receiver_framework.js"></script>
     <script>
+      window.addEventListener('error', e => console.error('Global error:', e));
+      window.addEventListener('unhandledrejection', e => console.error('Unhandled promise:', e.reason));
+      
+      cast.debug.CastDebugLogger.getInstance().setEnabled(true);
+      cast.debug.CastDebugLogger.getInstance().showDebugLogs(true);
+      
       const context = cast.framework.CastReceiverContext.getInstance();
       const playerManager = context.getPlayerManager();
       
@@ -13,9 +19,6 @@
         console.log('Load request: ', loadRequestData);
         return loadRequestData;
       });
-
-      window.addEventListener('error', e => console.error('Global error:', e));
-      window.addEventListener('unhandledrejection', e => console.error('Unhandled promise:', e.reason));
 
       context.start();
     </script>
