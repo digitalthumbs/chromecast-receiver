@@ -1,0 +1,23 @@
+<!-- receiver.html -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Custom Receiver</title>
+    <script type="text/javascript" src="https://www.gstatic.com/cast/sdk/libs/caf_receiver/v3/cast_receiver_framework.js"></script>
+    <script>
+      const context = cast.framework.CastReceiverContext.getInstance();
+      const playerManager = context.getPlayerManager();
+      
+      // Optional: Listen for messages
+      playerManager.setMessageInterceptor(cast.framework.messages.MessageType.LOAD, (loadRequestData) => {
+        console.log('Load request: ', loadRequestData);
+        return loadRequestData;
+      });
+
+      context.start();
+    </script>
+  </head>
+  <body>
+    <h1>Chromecast Receiver</h1>
+  </body>
+</html>
