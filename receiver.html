@@ -7,10 +7,7 @@
     <script>
       window.addEventListener('error', e => console.error('Global error:', e));
       window.addEventListener('unhandledrejection', e => console.error('Unhandled promise:', e.reason));
-      
-      cast.debug.CastDebugLogger.getInstance().setEnabled(true);
-      cast.debug.CastDebugLogger.getInstance().showDebugLogs(true);
-      
+           
       const context = cast.framework.CastReceiverContext.getInstance();
       const playerManager = context.getPlayerManager();
       
